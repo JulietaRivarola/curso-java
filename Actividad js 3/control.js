@@ -4,7 +4,7 @@ let usuario = document.getElementById('usuario');
 let pass = document.getElementById('pass');
 let submit = document.getElementById('submit');
 
-form.onsubmit = function(e) { if (datosCompletados(e)) { validarUsuario(e)} }
+form.onsubmit = function(e) { if (datosCompletados(e)) { validarUsuario(e)}}
 
 function datosCompletados(e){
 	let esValido = true;
@@ -19,11 +19,14 @@ function datosCompletados(e){
 function validarUsuario(e){
 		let esValido = false;
 		let i = 0;
-		while(i<usuario.length || esValido ){
-			if(usuario[i]== '@'){
-			esValido = true;
+		
+			while(i<usuario.value.length || esValido ){
+			if(usuario.value[i] === '@'){
+				esValido = true;
 			}
+			i++;
 		}	
+		
 		if(!esValido){
 			e.preventDefault();
 			alert('Usuario ingresado no valido. El usuario debe contener al menos una @.');
